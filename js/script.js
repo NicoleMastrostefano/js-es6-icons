@@ -1,9 +1,6 @@
 // definire un array di oggetti; ogni oggetto
 // rappresenta un'icona, che è caratterizzata da:
 // nome, prefisso, tipo e famiglia.
-// Utilizzando la funzione forEach e il template
-// literal, visualizzare in pagina tutte le icone con il
-// proprio nome.
 
 $(document).ready(
   function(){
@@ -115,19 +112,44 @@ $(document).ready(
     const container=$(".box");
 
 
-    const types= getTypes(icons)
+    const types= getTypes(icons);
 
-    const coloredItem = color(icons,colors,types)
-    console.log(coloredItem);
-
+    const coloredItem = color(icons,colors,types);
+    // Visualizzare le icone di colore diverso in base al
+    // tipo.
     print(coloredItem,container);
+    // ogni volta che cambia il valore selezionato,
+    // visualizzare le icone corrispondenti
+    const select= ($("#select"));
+    printOptions(select,types);
+
+    select.change(
+      function(){
+        const selected = $(this).val();
+        if (selected=="all") {
+          print(coloredItem,container);
+
+
+        }else {
+          const filtered=coloredItem.filter(
+            (element)=>{
+              return element.type==selected;
+            }
+          );
+          print(filtered,container)
+        }
+      }
+    )
   }
 );
 
 
 
-
+// Utilizzando la funzione forEach e il template
+// literal
 function print(array,container){
+  container.html("");
+
   array.forEach((element,index) => {
 
     const {family,prefix,name,color}=element;
@@ -136,17 +158,12 @@ function print(array,container){
         <i class="fas fa-${name}"style="color:${color}"></i>
         <div> ${name.toUpperCase()} </div>
         </div>
-      `);
-
+    `);
   });
-
 }
-// milestone 2:
+
 // definire un array di colori e associare ad ogni
 // tipo di icona un colore.
-// Visualizzare le icone di colore diverso in base al
-// tipo.
-
 
 function getTypes(array){
   const types = [];
@@ -156,8 +173,9 @@ function getTypes(array){
       if (types.includes(element.type) == false) {
       types.push(element.type);
       }
-  });
-  return types;
+    }
+  );
+    return types;
 }
 
 function color(array,color,types) {
@@ -176,9 +194,14 @@ function color(array,color,types) {
   return newArray;
 }
 
-// milestone 3:
 // aggiungere una select per filtrare le icone in
 // base al tipo.
 // Popolare le options della select dinamicamente
-// e, ogni volta che cambia il valore selezionato,
-// visualizzare le icone corrispondenti.
+function printOptions(select,types){
+  types.forEach(
+  (element) => {
+    select.append(`
+      <option value="${element}">${element}</option>
+    `)
+  });
+}
