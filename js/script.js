@@ -143,8 +143,6 @@ $(document).ready(
   }
 );
 
-
-
 // Utilizzando la funzione forEach e il template
 // literal
 function print(array,container){
