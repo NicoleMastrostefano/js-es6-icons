@@ -201,7 +201,7 @@ function printOptions(select,types){
   types.forEach(
   (element) => {
     select.append(`
-      <option value="${element}">${element}</option>
+      <option value="${element}">${element.toUpperCase()}</option>
     `)
   });
 }
