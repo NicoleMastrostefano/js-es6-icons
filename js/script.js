@@ -106,9 +106,19 @@ $(document).ready(
         family: "fas"
       },
     ];
+    const colors = [
+      "pink",
+      "orange",
+      "lightblue"
+    ];
 
     const container=$(".box");
     print(icons,container);
+
+    const types= getTypes(icons)
+
+    const coloredItem = color(icons,colors,types)
+    console.log(coloredItem);
   }
 );
 
@@ -118,19 +128,49 @@ $(document).ready(
 function print(array,container){
   array.forEach((element,index) => {
 
-    const {name}=element;
+    const {family,prefix,name}=element;
     container.append(`
-        <div>${name.toUpperCase()}</div>
+        <div class="icon">
         <i class="fas fa-${name}"></i>
+        <div> ${name.toUpperCase()} </div>
+        </div>
       `);
 
   });
 
 }
 
-
 // milestone 2:
 // definire un array di colori e associare ad ogni
 // tipo di icona un colore.
 // Visualizzare le icone di colore diverso in base al
 // tipo.
+
+
+function getTypes(array){
+  const types = [];
+
+  array.forEach(
+    (element) => {
+      if (types.includes(element.type) == false) {
+      types.push(element.type);
+      }
+  });
+  return types;
+}
+
+function color(array,color,types) {
+
+  const newArray = array.map(
+    (element) =>{
+      const index = types.indexOf(element.type);
+      const colorItem = color[index];
+      const colored= {
+        ...element,
+        color:colorItem
+      };
+      return colored;
+    }
+  );
+  return newArray;
+}

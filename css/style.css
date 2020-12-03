@@ -4,19 +4,24 @@
   margin: 0;
 }
 
+body {
+  font-size: 10px;
+}
 .box{
   width: 90%;
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-content: space-around;
 }
 
 i {
   font-size: 30px;
+}
+
+.icon{
   padding: 20px 50px;
   border-radius: 20px;
   border: 1px solid black;
-  color: black;
 }
