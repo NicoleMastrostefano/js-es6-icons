@@ -113,12 +113,14 @@ $(document).ready(
     ];
 
     const container=$(".box");
-    print(icons,container);
+  
 
     const types= getTypes(icons)
 
     const coloredItem = color(icons,colors,types)
     console.log(coloredItem);
+
+    print(coloredItem,container);
   }
 );
 
@@ -128,10 +130,10 @@ $(document).ready(
 function print(array,container){
   array.forEach((element,index) => {
 
-    const {family,prefix,name}=element;
+    const {family,prefix,name,color}=element;
     container.append(`
         <div class="icon">
-        <i class="fas fa-${name}"></i>
+        <i class="fas fa-${name}"style="color:${color}"></i>
         <div> ${name.toUpperCase()} </div>
         </div>
       `);
