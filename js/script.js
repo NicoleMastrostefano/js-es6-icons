@@ -109,8 +109,6 @@ $(document).ready(
 
     const container=$(".box");
     print(icons,container);
-
-
   }
 );
 
@@ -123,9 +121,16 @@ function print(array,container){
     const {name}=element;
     container.append(`
         <div>${name.toUpperCase()}</div>
-        <i class="fas fa${name}"></i>
+        <i class="fas fa-${name}"></i>
       `);
 
   });
 
 }
+
+
+// milestone 2:
+// definire un array di colori e associare ad ogni
+// tipo di icona un colore.
+// Visualizzare le icone di colore diverso in base al
+// tipo.
