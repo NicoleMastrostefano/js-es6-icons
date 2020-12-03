@@ -107,13 +107,13 @@ $(document).ready(
       },
     ];
     const colors = [
-      "pink",
+      "lightcoral",
       "orange",
-      "lightblue"
+      "blue"
     ];
 
     const container=$(".box");
-  
+
 
     const types= getTypes(icons)
 
@@ -141,7 +141,6 @@ function print(array,container){
   });
 
 }
-
 // milestone 2:
 // definire un array di colori e associare ad ogni
 // tipo di icona un colore.
@@ -176,3 +175,10 @@ function color(array,color,types) {
   );
   return newArray;
 }
+
+// milestone 3:
+// aggiungere una select per filtrare le icone in
+// base al tipo.
+// Popolare le options della select dinamicamente
+// e, ogni volta che cambia il valore selezionato,
+// visualizzare le icone corrispondenti.
