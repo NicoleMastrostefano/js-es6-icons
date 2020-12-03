@@ -152,7 +152,7 @@ function print(array,container){
 
   array.forEach((element,index) => {
 
-    const {family,prefix,name,color}=element;
+    const {family,type,prefix,name,color}=element;
     container.append(`
         <div class="icon">
         <i class="fas fa-${name}"style="color:${color}"></i>
