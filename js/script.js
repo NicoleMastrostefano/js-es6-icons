@@ -104,9 +104,9 @@ $(document).ready(
       },
     ];
     const colors = [
-      "lightcoral",
-      "orange",
-      "blue"
+      "#400080",
+      "#009F82",
+      "#0060A0"
     ];
 
     const container=$(".box");
